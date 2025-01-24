@@ -57,23 +57,7 @@ public class Player : MonoBehaviour
             transform.localScale = localScale;
         }
         if(Input.GetKeyDown(KeyCode.E)){
-            if (_climb == true && _touchClimbWall == true){
-
-                _rb.linearVelocity = Vector2.zero;
-                Vector3 localScale = transform.localScale;
-
-                GetComponent<Collider2D>().enabled = false;
-
-                Vector2 climbDirection = new Vector2(localScale.x * 0.5f, 4f);
-
-                GetComponent<Collider2D>().enabled = true;
-
-                Vector2 newPosition = (Vector2)transform.position + climbDirection;
-
-                transform.Translate(newPosition);
-
-                UnityEngine.Debug.Log("Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
-            }
+            Invoke("Climb", 0.001f);
         }
 
     }
@@ -86,5 +70,24 @@ public class Player : MonoBehaviour
             Destroy(collider.gameObject);
         }
 
+    }
+
+    private void Climb(){
+        if (_climb == true && _touchClimbWall == true){
+
+                _rb.linearVelocity = Vector2.zero;
+                Vector3 localScale = transform.localScale;
+
+                Vector2 climbDirection = new Vector2(localScale.x * 0.5f, 4f);
+                UnityEngine.Debug.Log("1) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+
+                Vector2 newPosition = (Vector2)transform.position + climbDirection;
+                UnityEngine.Debug.Log("2)Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+
+                transform.Translate(newPosition);
+                UnityEngine.Debug.Log("3) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+
+                UnityEngine.Debug.Log("4) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+            }
     }
 }
