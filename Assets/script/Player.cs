@@ -76,18 +76,19 @@ public class Player : MonoBehaviour
         if (_climb == true && _touchClimbWall == true){
 
                 _rb.linearVelocity = Vector2.zero;
+                UnityEngine.Debug.Log(_rb.linearVelocity);
                 Vector3 localScale = transform.localScale;
 
-                Vector2 climbDirection = new Vector2(localScale.x * 0.5f, 4f);
+                Vector2 climbDirection = new Vector2(localScale.x * 0.5f, 1.2f);
                 UnityEngine.Debug.Log("1) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
 
                 Vector2 newPosition = (Vector2)transform.position + climbDirection;
-                UnityEngine.Debug.Log("2)Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+                UnityEngine.Debug.Log("2)Escalade en cours : " + climbDirection + " | Local Scale: " + localScale + " | newPosition: " + newPosition);
 
-                transform.Translate(newPosition);
-                UnityEngine.Debug.Log("3) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+                transform.position=newPosition;
+                UnityEngine.Debug.Log("3) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale + " | newPosition: " + newPosition);
 
-                UnityEngine.Debug.Log("4) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale);
+                UnityEngine.Debug.Log("4) Escalade en cours : " + climbDirection + " | Local Scale: " + localScale + " | newPosition: " + newPosition);
             }
     }
 }
